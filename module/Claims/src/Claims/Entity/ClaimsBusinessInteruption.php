@@ -2,7 +2,7 @@
 namespace Claims\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Object\Entity\ObjectBusinessEquipment;
+use Proparty\Entity\PropartyBusinessEquipment;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -53,7 +53,7 @@ class ClaimsBusinessInteruption
 
     /**
      * This is a list of machine lost in the loss
-     * @ORM\ManyToMany(targetEntity="Object\Entity\ObjectBusinessEquipment")
+     * @ORM\ManyToMany(targetEntity="Proparty\Entity\PropartyBusinessEquipment")
      * @ORM\JoinTable(name="claims_business_interuption_equipment",
      * joinColumns={
      * @ORM\JoinColumn(name="claims_business", referencedColumnName="id")

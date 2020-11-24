@@ -39,6 +39,7 @@ class ClaimsServiceFactory implements FactoryInterface
         $centralBrokerId = $generalService->getCentralBroker();
         $xserv->setGeneralService($generalService)
             ->setEntityManager($em)
+            
             ->setCentralBrokerId($centralBrokerId)
             ->setCustomerClaimsSession($claimsProcessSession)
             ->setBrokerClaimsSession($brokerClaimsSession);

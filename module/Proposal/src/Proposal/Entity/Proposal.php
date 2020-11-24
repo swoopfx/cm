@@ -13,7 +13,7 @@ use Settings\Entity\Administrator;
 use Transactions\Entity\Invoice;
 use Settings\Entity\InsuranceType;
 use Settings\Entity\Currency;
-use Object\Entity\Object;
+use Proparty\Entity\Proparty;
 use Settings\Entity\MicroPaymentStructure;
 use Policy\Entity\CoverNote;
 use GeneralServicer\Entity\ManualPremium;
@@ -135,7 +135,7 @@ class Proposal
 
     /**
      *
-     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Object\Entity\Object")
+     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Proparty\Entity\Proparty")
      *      @ORM\JoinTable(name="object_proposal",
      *      joinColumns={
      *      @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")
@@ -144,7 +144,7 @@ class Proposal
      *      @ORM\JoinColumn(name="object_id", referencedColumnName="id")
      *      }
      *      )
-     * @var Object
+     * @var Proparty
      */
     private $object;
 
@@ -553,9 +553,9 @@ class Proposal
     /**
      * Add $object
      *
-     * @param \Object\Entity\Object $object            
+     * @param Proparty\Entity\Proparty $object            
      *
-     * @return \Object\Entity\Object
+     * @return Proparty\Entity\Proparty
      */
     public function addObject($object)
     {
@@ -569,7 +569,7 @@ class Proposal
     /**
      * Remove Object
      *
-     * @param \Object\Entity\Object $idDoc            
+     * @param Proparty\Entity\Proparty $idDoc            
      */
     public function removeObject($object)
     {

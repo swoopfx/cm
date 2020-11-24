@@ -2,6 +2,7 @@
 namespace GeneralServicer\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Proparty\Entity\Proparty;
 
 /**
  * GeneratedRecurBill
@@ -52,7 +53,7 @@ class GeneratedRecurBill
 
     /**
      *
-     * @var \Object\Entity\Object @ORM\ManyToOne(targetEntity="Object\Entity\Object")
+     * @var Proparty @ORM\ManyToOne(targetEntity="Proparty\Entity\Proparty")
      *      @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="object_id", referencedColumnName="id")
      *      })
@@ -201,11 +202,11 @@ class GeneratedRecurBill
     /**
      * Set object
      *
-     * @param \All\Entity\Object $object            
+     * @param Proparty $object          
      *
      * @return GeneratedRecurBill
      */
-    public function setObject(\All\Entity\Object $object = null)
+    public function setObject(Proparty $object = null)
     {
         $this->object = $object;
         

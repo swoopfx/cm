@@ -2,7 +2,7 @@
 namespace IMServices\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Object\Entity\Object;
+use Proparty\Entity\Proparty;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Offer\Entity\Offer;
@@ -460,9 +460,9 @@ class ContractAllRisk
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectContractAllRisk")
+     * @ORM\OneToOne(targetEntity="Proparty\Entity\Proparty", inversedBy="objectContractAllRisk")
      *
-     * @var Object
+     * @var Proparty
      */
     private $object;
 

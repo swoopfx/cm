@@ -22,7 +22,7 @@ return array(
         'Offer',
         'Settings',
         'Users',
-        'Object',
+//         'Object',
         'Report',
         'Claims',
         'IMServices',

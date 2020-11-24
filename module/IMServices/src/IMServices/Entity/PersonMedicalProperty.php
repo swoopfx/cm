@@ -2,6 +2,7 @@
 namespace IMServices\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Proparty\Entity\PropartyPersonData;
 
 /**
  * PersonMedicalProperty
@@ -34,7 +35,7 @@ class PersonMedicalProperty
 
     /**
      *
-     * @var \Object\Entity\ObjectPersonData @ORM\ManyToOne(targetEntity="Object\Entity\ObjectPersonData")
+     * @var PropartyPersonData @ORM\ManyToOne(targetEntity="Proparty\Entity\PropartyPersonData")
      *      @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="idobject_person_data", referencedColumnName="id")
      *      })
@@ -102,11 +103,11 @@ class PersonMedicalProperty
     /**
      * Set idobjectPersonData
      *
-     * @param \All\Entity\ObjectPersonData $idobjectPersonData            
+     * @param PropartyPersonData $idobjectPersonData            
      *
      * @return PersonMedicalProperty
      */
-    public function setIdobjectPersonData(\All\Entity\ObjectPersonData $idobjectPersonData = null)
+    public function setIdobjectPersonData(PropartyPersonData $idobjectPersonData = null)
     {
         $this->idobjectPersonData = $idobjectPersonData;
         

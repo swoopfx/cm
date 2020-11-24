@@ -8,6 +8,7 @@ use Settings\Entity\InsuranceServiceType;
 use Settings\Entity\InsuranceSpecificService;
 use Doctrine\Common\Collections\Collection;
 use Customer\Entity\Customer;
+use Proparty\Entity\Proparty;
 
 
 /**
@@ -68,7 +69,7 @@ class PolicyFloat
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Object\Entity\Object")
+     * @ORM\ManyToMany(targetEntity="Proparty\Entity\Proparty")
      * @ORM\JoinTable(name="float_policy_objects",
      * joinColumns={@ORM\JoinColumn(name="float_policy", referencedColumnName="id")},
      * inverseJoinColumns={@ORM\JoinColumn(name="object_id", referencedColumnName="id")}

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Transactions\Entity\Invoice;
 use Packages\Entity\PackageStatus;
 use Policy\Entity\CoverNote;
+use Proparty\Entity\Proparty;
 
 /**
  * @ORM\Entity(repositoryClass="Customer\Entity\Repository\CustomerPackageRepository")
@@ -96,14 +97,14 @@ class CustomerPackage
     private $updatedOn;
 
     /**
-     * @ORM\OneToMany(targetEntity="Object\Entity\Object", mappedBy="customerPackage")
+     * @ORM\OneToMany(targetEntity="Proparty\Entity\Proparty", mappedBy="customerPackage")
      *
-     * @var
+     * @var Proparty
      *
      */
     /**
      *
-     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Object\Entity\Object")
+     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Proparty\Entity\Proparty")
      *      @ORM\JoinTable(name="object_custpmer_packages",
      *      joinColumns={
      *      @ORM\JoinColumn(name="customer_package_id", referencedColumnName="id")

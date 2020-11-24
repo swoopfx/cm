@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Offer\Entity\OfferServiceType;
 use Offer\Entity\OfferSpecificService;
 use GeneralServicer\Entity\Document;
-use Object\Entity\Object as  OBJ;
+use Proparty\Entity\Proparty as  OBJ;
 use CsnUser\Entity\User;
 use Users\Entity\InsuranceBrokerRegistered;
 use Settings\Entity\Insurer;
@@ -162,7 +162,7 @@ class Offer
 
     /**
      *
-     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Object\Entity\Object")
+     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Proparty\Entity\Proparty")
      *      @ORM\JoinTable(name="object_offer",
      *      joinColumns={
      *      @ORM\JoinColumn(name="offer_id", referencedColumnName="id")

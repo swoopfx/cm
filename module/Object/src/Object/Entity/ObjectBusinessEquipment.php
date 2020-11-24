@@ -7,6 +7,7 @@ use Settings\Entity\BusinessEquipments;
 use Settings\Entity\EquipmentPurchaseValue;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Proparty\Entity\Proparty;
 
 
 /**
@@ -27,8 +28,8 @@ class ObjectBusinessEquipment
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="businessEquipment")
-     * @var Object
+     * @ORM\OneToOne(targetEntity="Proparty\Entity\Proparty", inversedBy="businessEquipment")
+     * @var Proparty
      */
     private $object;
     
