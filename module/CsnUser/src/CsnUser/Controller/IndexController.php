@@ -170,7 +170,7 @@ class IndexController extends AbstractActionController
                         $user = $user[0];
                     }
                     // var_dump($user);
-                    if (count($user) == 0) {
+                    if ($user == NULL) {
                         
                         $messages = 'The username or email is not valid!';
                         return new ViewModel(array(

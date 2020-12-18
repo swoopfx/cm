@@ -42,10 +42,10 @@ class PropartyOthers
     
     
     /**
-     * @ORM\OneToOne(targetEntity="Object", inversedBy="objectOthers")
-     * @var Object
+     * @ORM\OneToOne(targetEntity="Proparty", inversedBy="objectOthers")
+     * @var Proparty
      */
-    private $object;
+    private $proparty;
 
    
     

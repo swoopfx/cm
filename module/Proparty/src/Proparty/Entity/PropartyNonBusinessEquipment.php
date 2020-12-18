@@ -25,11 +25,11 @@ class PropartyNonBusinessEquipment
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectNonBusinessEquipment")
+     * @ORM\OneToOne(targetEntity="Proparty", inversedBy="objectNonBusinessEquipment")
      *
-     * @var Object
+     * @var Proparty
      */
-    private $object;
+    private $proparty;
 
     /**
      * @ORM\ManyToMany(targetEntity="Settings\Entity\BusinessEquipments")

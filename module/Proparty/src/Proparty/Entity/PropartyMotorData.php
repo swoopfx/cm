@@ -126,53 +126,53 @@ class PropartyMotorData
 
     /**
      *
-     * @var \Object\Entity\Object @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectMotor")
-     *      @ORM\JoinColumn(name="object", referencedColumnName="id")
+     * @var Proparty @ORM\OneToOne(targetEntity="Proparty", inversedBy="objectMotor")
+     *      @ORM\JoinColumn(name="proparty", referencedColumnName="id")
      */
-    private $object;
+    private $proparty;
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectMotorExtraAirCondition", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PropartyMotorExtraAirCondition", cascade={"persist"})
      * @ORM\JoinColumn(name="extra_motor_air_condition", referencedColumnName="id")
      *
-     * @var ObjectMotorExtraAirCondition
+     * @var PropartyMotorExtraAirCondition
      */
     private $extraAirCondition;
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectMotorExtraCdPlayer", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PropartyMotorExtraCdPlayer", cascade={"persist"})
      * @ORM\JoinColumn(name="extra_motor_cd_player", referencedColumnName="id")
      *
-     * @var ObjectMotorExtraCdPlayer
+     * @var PropartyMotorExtraCdPlayer
      */
     private $extraCdPlayer;
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectMotorExtraSecuritySystem", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PropartyMotorExtraSecuritySystem", cascade={"persist"})
      * @ORM\JoinColumn(name="extra_motor_security_system", referencedColumnName="id")
      *
-     * @var ObjectMotorExtraSecuritySystem
+     * @var PropartyMotorExtraSecuritySystem
      */
     private $extraSecuritySystems;
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectMotorExtraAlloyWheels", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PropartyMotorExtraAlloyWheels", cascade={"persist"})
      * @ORM\JoinColumn(name="extra_motor_alloy_wheels", referencedColumnName="id")
      *
-     * @var ObjectMotorExtraAlloyWheels
+     * @var PropartyMotorExtraAlloyWheels
      */
     private $extraAlloyWheels;
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectMotorExtraOthers", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="PropartyMotorExtraOthers", cascade={"persist"})
      * @ORM\JoinColumn(name="extra_motor_others", referencedColumnName="id")
      *
-     * @var ObjectMotorExtraOthers
+     * @var PropartyMotorExtraOthers
      */
     private $extraOthers;
 

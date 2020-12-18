@@ -29,10 +29,10 @@ class PropartyLife
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Object")
-     * @var Object
+     * @ORM\ManyToOne(targetEntity="Proparty")
+     * @var Proparty
      */
-    private $object;
+    private $proparty;
 
     /**
      * @ORM\ManyToOne(targetEntity="Settings\Entity\Title")
@@ -95,8 +95,8 @@ class PropartyLife
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectLifeForignerDetails")
-     * @var ObjectLifeForignerDetails
+     * @ORM\OneToOne(targetEntity="PropartyLifeForignerDetails")
+     * @var PropartyLifeForignerDetails
      */
     private $objectLifeForiegnerDetails;
 
@@ -138,7 +138,7 @@ class PropartyLife
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="ObjectLifeMedicalHistroy", mappedBy="objectLife")
+     * @ORM\OneToMany(targetEntity="PropartyLifeMedicalHistroy", mappedBy="objectLife")
      * @var Collection
      */
     private $objectLifeMedicalHistory;
@@ -147,15 +147,15 @@ class PropartyLife
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="Object\Entity\ObjectLifeBeneficiary", mappedBy="objectLife")
-     * @var ObjectLifeBeneficiary
+     * @ORM\OneToMany(targetEntity="PropartyLifeBeneficiary", mappedBy="objectLife")
+     * @var PropartyLifeBeneficiary
      */
     private $beneficiary;
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectLifeForignerDetails")
-     * @var ObjectLifeForignerDetails
+     * @ORM\OneToOne(targetEntity="PropartyLifeForignerDetails")
+     * @var PropartyLifeForignerDetails
      */
     private $objectLifeForignerDetails;
 
@@ -420,7 +420,7 @@ class PropartyLife
     }
 
     /**
-     * @param \Object\Entity\ObjectLifeForignerDetails $objectLifeForiegnerDetails
+     * @param \PropartyLifeForignerDetails $objectLifeForiegnerDetails
      */
     public function setObjectLifeForiegnerDetails($objectLifeForiegnerDetails)
     {
@@ -501,7 +501,7 @@ class PropartyLife
     }
 
     /**
-     * @param \Object\Entity\ObjectLifeForignerDetails $objectLifeForignerDetails
+     * @param PropartyLifeForignerDetails $objectLifeForignerDetails
      */
     public function setObjectLifeForignerDetails($objectLifeForignerDetails)
     {

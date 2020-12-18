@@ -103,11 +103,11 @@ class PropartyTravel
 
     /**
      *
-     * @var \Object\Entity\Object
-     *  @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectTravel")
+     * @var Proparty
+     *  @ORM\OneToOne(targetEntity="Proparty", inversedBy="objectTravel")
      *     
      */
-    private $object;
+    private $proparty;
 
 //     /**
 //      * @ORM\ManyToOne(targetEntity="Settings\Entity\Country")

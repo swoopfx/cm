@@ -22,9 +22,9 @@ class PropartyLifeProfession
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="ObjectLife")
+     * @ORM\ManyToOne(targetEntity="PropartyLife")
      * 
-     * @var ObjectLife
+     * @var PropartyLife
      */
     private $objectLife;
     

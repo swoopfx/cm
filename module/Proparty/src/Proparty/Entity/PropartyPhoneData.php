@@ -65,12 +65,12 @@ class PropartyPhoneData
 
     /**
      *
-     * @var \Object\Entity\Object @ORM\ManyToOne(targetEntity="Proparty\Entity\Proparty")
+     * @var Proparty @ORM\ManyToOne(targetEntity="Proparty\Entity\Proparty")
      *      @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="object_id", referencedColumnName="id")
      *      })
      */
-    private $object;
+    private $proparty;
 
     /**
      * Get id

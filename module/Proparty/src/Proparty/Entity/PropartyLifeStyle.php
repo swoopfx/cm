@@ -23,10 +23,10 @@ class PropartyLifeStyle
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Object", inversedBy="objectLifeStyle")
-     * @var Object
+     * @ORM\OneToOne(targetEntity="Proparty", inversedBy="objectLifeStyle")
+     * @var Proparty
      */
-    private $object;
+    private $proparty;
 
     /**
      * @ORM\ManyToOne(targetEntity="Settings\Entity\LifeStyleCategory")

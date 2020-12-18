@@ -23,8 +23,8 @@ class PropartyLifeBeneficiary
     private $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Object\Entity\ObjectPersonData", inversedBy="beneficiary")
-     * @var ObjectPersonData
+     * @ORM\ManyToOne(targetEntity="PropartyPersonData", inversedBy="beneficiary")
+     * @var PropartyPersonData
      */
     private $objectLife;
 

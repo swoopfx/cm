@@ -23,8 +23,8 @@ class PropartyLifeForignerDetails
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ObjectLife")
-     * @var ObjectLife
+     * @ORM\ManyToOne(targetEntity="PropartyLife")
+     * @var PropartyLife
      */
     private $objectLife;
 

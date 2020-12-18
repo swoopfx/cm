@@ -68,11 +68,11 @@ class PropartyBusiness
     private $businessAddress;
 
     /**
-     * @ORM\OneToOne(targetEntity="Object", inversedBy="objectBusiness")
+     * @ORM\OneToOne(targetEntity="Proparty", inversedBy="objectBusiness")
      *
-     * @var Object
+     * @var Proparty
      */
-    private $object;
+    private $proparty;
 
     /**
      */

@@ -163,7 +163,7 @@ class Proparty
     /**
      *
      * @var PropartyMotorData
-     * @ORM\OneToOne(targetEntity="Proparty\Entity\PropartyMotorData", mappedBy="object")
+     * @ORM\OneToOne(targetEntity="Proparty\Entity\PropartyMotorData", mappedBy="proparty")
      *
      */
     private $objectMotor;
@@ -177,47 +177,47 @@ class Proparty
     
 
     /**
-     * @ORM\OneToOne(targetEntity="Proparty\Entity\PropartyBusinessEquipment", mappedBy="object")
+     * @ORM\OneToOne(targetEntity="Proparty\Entity\PropartyBusinessEquipment", mappedBy="proparty")
      * 
      * @var PropartyBusinessEquipment
      */
     private $businessEquipment;
     
     /**
-     * @ORM\OneToOne(targetEntity="Proparty\Entity\PropartyNonBusinessEquipment", mappedBy="object")
+     * @ORM\OneToOne(targetEntity="Proparty\Entity\PropartyNonBusinessEquipment", mappedBy="proparty")
      *
      * @var PropartyNonBusinessEquipment
      */
     private $objectNonBusinessEquipment;
 
     /**
-     * @ORM\OneToOne(targetEntity="Proparty\Entity\PropartyTravel", mappedBy="object")
+     * @ORM\OneToOne(targetEntity="Proparty\Entity\PropartyTravel", mappedBy="proparty")
      * 
      * @var PropartyTravel
      */
     private $objectTravel;
     
     /**
-     * @ORM\OneToOne(targetEntity="PropartySports",  mappedBy="object")
+     * @ORM\OneToOne(targetEntity="PropartySports",  mappedBy="proparty")
      * @var PropartySports
      */
     private $objectSport;
     
     /**
-     * @ORM\OneToOne(targetEntity="PropartyLifeStyle",  mappedBy="object")
+     * @ORM\OneToOne(targetEntity="PropartyLifeStyle",  mappedBy="proparty")
      * @var PropartyLifeStyle
      * 
      */
     private $objectLifeStyle;
     
     /**
-     * @ORM\OneToOne(targetEntity="PropartyPersonData", mappedBy="object")
+     * @ORM\OneToOne(targetEntity="PropartyPersonData", mappedBy="proparty")
      * @var PropartyPersonData
      */
     private $objectLife;
     
     /**
-     * @ORM\OneToOne(targetEntity="PropartyBusiness", mappedBy="object")
+     * @ORM\OneToOne(targetEntity="PropartyBusiness", mappedBy="proparty")
      * @var PropartyBusiness
      */
     private $objectBusiness;

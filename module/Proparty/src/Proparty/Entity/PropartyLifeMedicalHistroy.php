@@ -23,8 +23,8 @@ class PropartyLifeMedicalHistroy
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="ObjectPersonData", inversedBy="objectLifeMedicalHistory")
-     * @var ObjectPersonData
+     * @ORM\ManyToOne(targetEntity="PropartyPersonData", inversedBy="objectLifeMedicalHistory")
+     * @var PropartyPersonData
      */
     private $objectLife;
 

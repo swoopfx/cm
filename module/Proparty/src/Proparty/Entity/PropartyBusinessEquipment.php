@@ -27,10 +27,10 @@ class PropartyBusinessEquipment
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="businessEquipment")
-     * @var Object
+     * @ORM\OneToOne(targetEntity="Proparty", inversedBy="businessEquipment")
+     * @var Proparty
      */
-    private $object;
+    private $proparty;
     
     /**
      * @ORM\ManyToMany(targetEntity="Settings\Entity\BusinessEquipments")

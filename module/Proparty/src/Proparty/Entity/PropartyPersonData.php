@@ -101,8 +101,8 @@ class PropartyPersonData
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectLifeForignerDetails")
-     * @var ObjectLifeForignerDetails
+     * @ORM\OneToOne(targetEntity="PropartyLifeForignerDetails")
+     * @var PropartyLifeForignerDetails
      */
     private $objectLifeForiegnerDetails;
 
@@ -134,10 +134,10 @@ class PropartyPersonData
 
     /**
      *
-     * @var \Object\Entity\Object @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectPerson")
+     * @var Proparty @ORM\OneToOne(targetEntity="Proparty", inversedBy="objectPerson")
      *     
      */
-    private $object;
+    private $proparty;
 
 //     /**
 //      *
@@ -174,7 +174,7 @@ class PropartyPersonData
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="ObjectLifeMedicalHistroy", mappedBy="objectLife")
+     * @ORM\OneToMany(targetEntity="PropartyLifeForignerDetails", mappedBy="objectLife")
      * @var Collection
      */
     private $objectLifeMedicalHistory;
@@ -188,8 +188,8 @@ class PropartyPersonData
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Object\Entity\ObjectLifeForignerDetails")
-     * @var ObjectLifeForignerDetails
+     * @ORM\OneToOne(targetEntity="PropartyLifeForignerDetails")
+     * @var PropartyLifeForignerDetails
      */
     private $objectLifeForignerDetails;
 

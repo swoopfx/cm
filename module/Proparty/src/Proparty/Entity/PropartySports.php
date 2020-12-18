@@ -37,11 +37,11 @@ class PropartySports
     private $details;
 
     /**
-     * @ORM\OneToOne(targetEntity="Object", inversedBy="objectSport")
+     * @ORM\OneToOne(targetEntity="Proparty", inversedBy="objectSport")
      *
-     * @var Object
+     * @var Proparty
      */
-    private $object;
+    private $proparty;
 
     public function __construct()
     {}
