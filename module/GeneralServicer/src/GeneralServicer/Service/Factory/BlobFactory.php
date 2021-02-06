@@ -49,7 +49,7 @@ class BlobFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $service = new BlobService();
-        $connectionString = ($_SERVER['APPLICATION_ENV'] == 'development' ? GeneralService::GENERAL_BLOB_CONNECTION_STRING : GeneralService::GENERAL_BLOB_LIVE_CONNECTION_STRING );
+        $connectionString = (getenv('APPLICATION_ENV')== 'development' ? GeneralService::GENERAL_BLOB_CONNECTION_STRING : GeneralService::GENERAL_BLOB_LIVE_CONNECTION_STRING );
         $blobClient = BlobRestProxy::createBlobService($connectionString);
 //         var $blobClient->getContainerProperties("power");
         $generalService = $serviceLocator->get('GeneralServicer\Service\GeneralService');

@@ -162,14 +162,14 @@ class IndexController extends AbstractActionController
 
         return new ViewModel(array(
             'customers' => $customers,
-            'broker' => $broker,
-            'sub' => $sub,
-            'ap' => $activeProposals,
-            'unsettledClaims' => $unSettledClaims,
-            'myExpiredInvoice' => $myExpiredInvoice,
-            'activeOffers' => $activeOffer,
-            "expiringInvoice" => $expiringInvoice,
-            "expiringPolicy" => $expiringPolicy,
+//             'broker' => $broker,
+//             'sub' => $sub,
+//             'ap' => $activeProposals,
+//             'unsettledClaims' => $unSettledClaims,
+//             'myExpiredInvoice' => $myExpiredInvoice,
+//             'activeOffers' => $activeOffer,
+//             "expiringInvoice" => $expiringInvoice,
+//             "expiringPolicy" => $expiringPolicy,
             // 'customerCount'=>$customerCount,
             "logoForm" => $logoForm,
             'chart' => $chart

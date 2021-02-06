@@ -13,7 +13,7 @@ use Transactions\Entity\MicroPayment;
 use Transactions\Service\TransactionService;
 use Transactions\Entity\Transaction;
 use Policy\Entity\PolicyHook;
-use Object\Entity\Object;
+use Proparty\Entity\Proparty;
 use Policy\Entity\CoverNote;
 use ZfcBase\EventManager\EventProvider;
 use GeneralServicer\Service\TriggerService;
