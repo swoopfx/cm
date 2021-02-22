@@ -26,7 +26,7 @@ if ($this->identity()) {
 <?php  echo $this->dashboard_subscription_expire_alert(); ?>
 <?php // echo?>
 <div class="row tile_count">
-	<?php echo $this->dashboard_stats_helper($customers, $ap, $unsettledClaims, $activeOffers, $myExpiredInvoice)?>
+	<?php  echo $this->dashboard_stats_helper($customers, $ap, $unsettledClaims, $activeOffers, $myExpiredInvoice)?>
 	
 
 </div>
@@ -37,13 +37,13 @@ if ($this->identity()) {
 <div class="row">
 <?php
 
-echo $this->dashboard_sms_expire_notify($broker);
+//echo $this->dashboard_sms_expire_notify($broker);
 
-//         echo $this->dashboard_info_ducker_helper($broker)?>
-	<?php echo $this->dashboard_broker_account_helper($broker); ?>
+         echo $this->dashboard_info_ducker_helper($broker)?>
+	<?php //echo $this->dashboard_broker_account_helper($broker); ?>
 
 
-	<?php  echo $this->dashboard_broker_sub_helper($sub)?>
+	<?php  //echo $this->dashboard_broker_sub_helper($sub)?>
 
 
 	<!-- Enter here -->
@@ -81,14 +81,14 @@ echo $this->dashboard_sms_expire_notify($broker);
 
 <div class="row">
 
-	<?php  echo $this->partial('dashboard-my-proposal-snipet', array('ap'=>$ap));?>
+	<?php  //echo $this->partial('dashboard-my-proposal-snipet', array('ap'=>$ap));?>
 
-	<?php  echo $this->partial('dashboard-upcoming-renwal', array('expiringInvoice'=>$expiringInvoice))?>
+	<?php  //echo $this->partial('dashboard-upcoming-renwal', array('expiringInvoice'=>$expiringInvoice))?>
 </div>
 <div class="row">
 	
-<?php  echo $this->partial('dashboard-active-offer-snipet', array('offer'=>$activeOffers));?>
-<?php  echo $this->partial('dashboard-unsettled-claims-snipet', array('unsettledClaims'=>$unsettledClaims));?>
+<?php  //echo $this->partial('dashboard-active-offer-snipet', array('offer'=>$activeOffers));?>
+<?php  //echo $this->partial('dashboard-unsettled-claims-snipet', array('unsettledClaims'=>$unsettledClaims));?>
  <?php
     // echo $this->chartjs($this->chart, [
     // 'show_legend' => true,

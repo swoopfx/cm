@@ -54,9 +54,11 @@ class GeneralServiceFactory implements FactoryInterface
         $request = $serviceLocator->get("Request");
         $viewHelperManager = $serviceLocator->get('ViewHelperManager');
         $basePath = $viewHelperManager->get('basePath');
-        $uploadForm = $serviceLocator->get("FormElementManager")->get("GeneralServicer\Form\GeneralUploadForm");
+//         $uploadForm = $serviceLocator->get("FormElementManager")->get("GeneralServicer\Form\GeneralUploadForm");
 
-        $mailService = $serviceLocator->get('acmailer.mailservice.default');
+//         $mailService = $serviceLocator->get('acmailer.mailservice.default');
+        $mailService = (getenv('APPLICATION_ENV') == "development" ? $serviceLocator->get("acmailer.mailservice.default") : $serviceLocator->get("acmailer.mailservice.live"));
+        
         
         $this->auth = $auth;
         $this->getuserId();
@@ -82,7 +84,7 @@ class GeneralServiceFactory implements FactoryInterface
             ->setRequest($request)
             ->setUrlViewHelper($urlViewHelper)
             ->setGeneralSession($generalSession)
-            ->setUploadForm($uploadForm)
+//             ->setUploadForm($uploadForm)
 //             ->setPdfModelService($pdfModelService)
             ->setBasePath($basePath);
         

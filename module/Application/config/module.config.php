@@ -87,6 +87,7 @@ return array(
             'layout/layout' => __DIR__ . '/../view/layout/404.phtml', // FIXME - make sure this is default 404.phtml
             'layout/login' => __DIR__ . '/../view/layout/login.phtml',
             'activate-lay' => __DIR__ . '/../view/layout/activate-lay.phtml',
+            "broker_setup_layout"=> __DIR__ . '/../view/layout/broker_setup_layout.phtml',
             'insurer-portal' => __DIR__ . '/../view/layout/insurer-portal.phtml',
             'insurer-portal-board' => __DIR__ . '/../view/layout/insure-portal-board.phtml',
             'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',

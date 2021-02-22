@@ -42,7 +42,7 @@ class SetupPlugin extends AbstractPlugin
         
       // if($this->auth->)
         
-        if ($this->isProfile == FALSE) {
+        if ($this->isProfile == FALSE || $this->isProfile == NULL) {
             
             switch ($this->roleId) {
                 
@@ -56,6 +56,7 @@ class SetupPlugin extends AbstractPlugin
                     break;
                 
                 case UserService::USER_ROLE_SETUP_BROKER:
+                   
                     $this->brokerSetup();
                     break;
                 // default:
@@ -65,6 +66,7 @@ class SetupPlugin extends AbstractPlugin
             switch ($this->roleId) {
                 case UserService::USER_ROLE_BROKER:
                 case UserService::USER_ROLE_SETUP_BROKER:
+                   
                     $this->brokerNotActive();
                     break;
                 

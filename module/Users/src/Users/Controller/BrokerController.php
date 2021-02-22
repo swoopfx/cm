@@ -190,7 +190,9 @@ class BrokerController extends AbstractActionController
 
     public function setupAction()
     {
-        $this->redirectPlugin()->redirectToLogout();
+        
+        return $this->redirectPlugin()->redirectToLogout();
+        
         // $this->redirectPlugin()->redirectCondition();
         $em = $this->entityManager;
         // If this user has already started the process,
@@ -213,11 +215,14 @@ class BrokerController extends AbstractActionController
                 }
             }
         }
+        
+        $this->layout("broker_setup_layout"); 
         $view = new ViewModel(array(
             'setUpForm' => $setUpForm,
             'info' => $setUpInfo
         ));
-        $this->layout('layout/layout.phtml');
+
+       
         return $view;
     }
 
@@ -325,6 +330,7 @@ class BrokerController extends AbstractActionController
                 }
             }
         }
+        $this->layout("broker_setup_layout"); 
         $view = new ViewModel(array(
             'setUpDataForm' => $setUpDataForm,
             'uploadForm' => $uploadForm

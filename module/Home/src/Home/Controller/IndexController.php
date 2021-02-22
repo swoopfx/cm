@@ -76,7 +76,7 @@ class IndexController extends AbstractActionController
         $response = parent::onDispatch($e);
         // $response = parent::on
         try{
-        $this->redirectPlugin()->redirectCondition();
+         $this->redirectPlugin()->redirectCondition();
         }catch (\Exception $e){
             var_dump($e->getMessage());
         }
@@ -91,7 +91,8 @@ class IndexController extends AbstractActionController
 
     public function dashboardAction()
     {
-        $this->setupRedirectPlugin()->setupRedirect();
+        return $this->setupRedirectPlugin()->setupRedirect();
+       
 //         var_dump($this->chatkitService->initiate());
 //         var_dump($this->identity()->getUsername());
 
@@ -162,17 +163,17 @@ class IndexController extends AbstractActionController
 
         return new ViewModel(array(
             'customers' => $customers,
-//             'broker' => $broker,
-//             'sub' => $sub,
-//             'ap' => $activeProposals,
-//             'unsettledClaims' => $unSettledClaims,
-//             'myExpiredInvoice' => $myExpiredInvoice,
-//             'activeOffers' => $activeOffer,
-//             "expiringInvoice" => $expiringInvoice,
+            'broker' => $broker,
+            'sub' => $sub,
+            'ap' => $activeProposals,
+            'unsettledClaims' => $unSettledClaims,
+            'myExpiredInvoice' => $myExpiredInvoice,
+            'activeOffers' => $activeOffer,
+            "expiringInvoice" => $expiringInvoice,
 //             "expiringPolicy" => $expiringPolicy,
-            // 'customerCount'=>$customerCount,
+//             'customerCount'=>$customerCount,
             "logoForm" => $logoForm,
-            'chart' => $chart
+//             'chart' => $chart
         ));
     }
 

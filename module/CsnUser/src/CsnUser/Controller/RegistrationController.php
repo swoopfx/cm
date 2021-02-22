@@ -86,12 +86,12 @@ class RegistrationController extends AbstractActionController
         $mailService = $this->mailService;
         $user = new User();
         $form = $this->registerForm->createUserForm($user, 'SignUp');
-
+        
         if ($this->getRequest()->isPost()) {
             $form->setValidationGroup('username', 'email', 'password', 'passwordVerify', 'question', 'answer', 'csrf');
             $data = $this->getRequest()->getPost();
             $form->setData($data);
-
+            
             if ($form->isValid()) {
                 $entityManager = $this->entityManager;
                 $user->setState($entityManager->find('CsnUser\Entity\State', UserService::USER_STATE_ENABLED));
@@ -102,7 +102,7 @@ class RegistrationController extends AbstractActionController
                 $user->setRegistrationDate(new \DateTime());
                 $user->setEmailConfirmed(false);
                 $user->setProfiled(false);
-
+                
                 try {
                     $fullLink = $this->url()->fromRoute('user-register', array(
                         'action' => 'confirm-email',
@@ -110,33 +110,28 @@ class RegistrationController extends AbstractActionController
                     ), array(
                         'force_canonical' => true
                     ));
-
+                    
                     $imapLogo = $this->url()->fromRoute('welcome', array(), array(
                         'force_canonical' => true
                     )) . "images/logow.png";
-
+                    
                     // $mailer = $this->mail;
-
+                    
                     $var = [
                         'logo' => $imapLogo,
                         'confirmLink' => $fullLink
                     ];
-
+                    
                     $template['template'] = "general-user-confirm-email";
                     $template['var'] = $var;
-
+                    
                     $messagePointer['to'] = $user->getEmail();
                     $messagePointer['fromName'] = "IMAPP CM";
                     $messagePointer['subject'] = "IMAPP CM: Confirm Email";
-
+                    
                     $entityManager->persist($user);
                     $entityManager->flush();
-                    // register on pusher
-                    $this->chatkitService->createUser([
-                        'id' => strval($user->getusername()),
-                        'name' => strval($user->getUsername())
-                    ]);
-
+                    
                     $viewModel = new ViewModel(array(
                         'email' => $user->getEmail(),
                         'navMenu' => $this->options->getNavMenu()
@@ -154,7 +149,7 @@ class RegistrationController extends AbstractActionController
                 }
             }
         }
-
+        
         $viewModel = new ViewModel(array(
             'form' => $form,
             'navMenu' => $this->options->getNavMenu()
@@ -175,7 +170,7 @@ class RegistrationController extends AbstractActionController
         if (! $user = $this->identity()) {
             return $this->redirect()->toRoute($this->options->getLoginRedirectRoute());
         }
-
+        
         $form = $this->registerForm->createUserForm($user, 'EditProfile');
         $email = $user->getEmail();
         $username = $user->getUsername();
@@ -197,7 +192,7 @@ class RegistrationController extends AbstractActionController
                 $message = $this->getTranslatorHelper()->translate('Your profile has been edited');
             }
         }
-
+        
         return new ViewModel(array(
             'form' => $form,
             'email' => $email,
@@ -220,7 +215,7 @@ class RegistrationController extends AbstractActionController
         if (! $user = $this->identity()) {
             return $this->redirect()->toRoute($this->options->getLoginRedirectRoute());
         }
-
+        
         $form = $this->registerForm->createUserForm($user, 'ChangePassword');
         $message = null;
         if ($this->getRequest()->isPost()) {
@@ -239,7 +234,7 @@ class RegistrationController extends AbstractActionController
                     $entityManager = $this->entityManager;
                     $entityManager->persist($user);
                     $entityManager->flush();
-
+                    
                     $viewModel = new ViewModel(array(
                         'navMenu' => $this->options->getNavMenu()
                     ));
@@ -250,7 +245,7 @@ class RegistrationController extends AbstractActionController
                 }
             }
         }
-
+        
         return new ViewModel(array(
             'form' => $form,
             'navMenu' => $this->options->getNavMenu(),
@@ -272,7 +267,7 @@ class RegistrationController extends AbstractActionController
         if ($user) {
             return $this->redirect()->toRoute($this->options->getLoginRedirectRoute());
         }
-
+        
         $user = new User();
         $form = $this->registerForm->createUserForm($user, 'ResetPassword');
         $message = null;
@@ -293,7 +288,7 @@ class RegistrationController extends AbstractActionController
                     ));
                 } else {
                     $user = $user[0];
-
+                    
                     if (isset($user)) {
                         if ($user->getRole()->getId() != UserService::USER_ROLE_BROKER || $user->getRole()->getId() != UserService::USER_ROLE_BROKER_CHILD || $user->getRole()->getId() != UserService::USER_ROLE_SETUP_BROKER) {
                             $this->flashmessenger()->addErrorMessage("You are not authorized to access this page");
@@ -310,33 +305,33 @@ class RegistrationController extends AbstractActionController
                                 // $this->sendEmail($user->getEmail(), $this->getTranslatorHelper()
                                 // ->translate('Please, confirm your request to change password!'), sprintf($this->getTranslatorHelper()
                                 // ->translate('Hi, %s. Please, follow this link %s to confirm your request to change password.'), $user->getUsername(), $fullLink));
-
+                                
                                 $pointers["to"] = $user->getEmail();
                                 $pointers["fromName"] = "IMAPP CM";
                                 $pointers["subject"] = "Reset Password";
-
+                                
                                 $imapLogo = $this->url()->fromRoute('welcome', array(), array(
                                     'force_canonical' => true
                                 )) . "images/logow.png";
-
+                                
                                 $template["template"] = "general-mail-default";
                                 $template["var"] = array(
                                     "logo" => $imapLogo,
                                     "title" => "Confirm your request to change password!",
                                     "message" => sprintf($this->getTranslatorHelper()->translate('Hi, %s. Please, follow this link %s to confirm your request to change password.'), $user->getUsername(), $fullLink)
                                 );
-
+                                
                                 $this->generalService->sendMails($pointers, $template);
-
+                                
                                 $entityManager->persist($user);
                                 $entityManager->flush();
-
+                                
                                 $this->flashmessenger()->addSuccessMessage("A reset link has been sent to your registered email");
                                 $viewModel = new ViewModel(array(
                                     'email' => $user->getEmail()
                                     // 'navMenu' => $this->options->getNavMenu()
                                 ));
-
+                                
                                 $viewModel->setTemplate('csn-user/registration/password-change-success');
                                 return $viewModel;
                             } catch (\Exception $e) {
@@ -346,7 +341,7 @@ class RegistrationController extends AbstractActionController
                                 // $this->options->getDisplayExceptions(),
                                 // $this->options->getNavMenu()
                                 // );
-
+                                
                                 $this->flashmessenger()->addErrorMessage("We had problems reseting your password");
                                 $this->redirect()->refresh();
                             }
@@ -355,7 +350,7 @@ class RegistrationController extends AbstractActionController
                 }
             }
         }
-
+        
         $viewModel = new ViewModel(array(
             'form' => $form,
             // 'navMenu' => $this->options->getNavMenu(),
@@ -377,7 +372,7 @@ class RegistrationController extends AbstractActionController
         if (! $user = $this->identity()) {
             return $this->redirect()->toRoute($this->options->getLoginRedirectRoute());
         }
-
+        
         $form = $this->registerForm->createUserForm($user, 'ChangeEmail');
         $message = null;
         if ($this->getRequest()->isPost()) {
@@ -394,7 +389,7 @@ class RegistrationController extends AbstractActionController
                     $entityManager = $this->entityManager;
                     $entityManager->persist($user);
                     $entityManager->flush();
-
+                    
                     $viewModel = new ViewModel(array(
                         'email' => $newMail,
                         'navMenu' => $this->options->getNavMenu()
@@ -406,7 +401,7 @@ class RegistrationController extends AbstractActionController
                 }
             }
         }
-
+        
         return new ViewModel(array(
             'form' => $form,
             'navMenu' => $this->options->getNavMenu(),
@@ -426,7 +421,7 @@ class RegistrationController extends AbstractActionController
         if (! $user = $this->identity()) {
             return $this->redirect()->toRoute($this->options->getLoginRedirectRoute());
         }
-
+        
         $form = $this->registerForm->createUserForm($user, 'ChangeSecurityQuestion');
         $message = null;
         if ($this->getRequest()->isPost()) {
@@ -437,12 +432,12 @@ class RegistrationController extends AbstractActionController
             if ($form->isValid()) {
                 $data = $form->getData();
                 $user->setPassword($currentPassword);
-
+                
                 if (UserService::verifyHashedPassword($user, $this->params()->fromPost('password'))) {
                     $entityManager = $this->entityManager;
                     $entityManager->persist($user);
                     $entityManager->flush();
-
+                    
                     $viewModel = new ViewModel(array(
                         'navMenu' => $this->options->getNavMenu()
                     ));
@@ -453,7 +448,7 @@ class RegistrationController extends AbstractActionController
                 }
             }
         }
-
+        
         return new ViewModel(array(
             'form' => $form,
             'navMenu' => $this->options->getNavMenu(),
@@ -477,7 +472,7 @@ class RegistrationController extends AbstractActionController
          * @var Ambiguous $token
          */
         $token = $this->params()->fromRoute('id');
-
+        
         try {
             $entityManager = $this->entityManager;
             if ($token !== '' && $user = $entityManager->getRepository('CsnUser\Entity\User')->findOneBy(array(
@@ -492,13 +487,13 @@ class RegistrationController extends AbstractActionController
                 $user->setEmailConfirmed(1);
                 $entityManager->persist($user);
                 $entityManager->flush();
-
+                
                 $this->flashmessenger()->addSuccessMessage("Email successfully confirmed and registration completed");
                 $this->redirect()->toRoute("user-index");
                 // $viewModel = new ViewModel(array(
                 // 'navMenu' => $this->options->getNavMenu()
                 // ));
-
+                
                 // $viewModel->setTemplate('csn-user/registration/confirm-email-success');
                 // return $viewModel;
                 return $this;
@@ -541,10 +536,10 @@ class RegistrationController extends AbstractActionController
                     'action' => 'login'
                 ));
                 $this->sendEmail($user->getEmail(), 'Your password has been changed!', sprintf($this->translator->translate('Hello again %s. Your new password is: %s. Please, follow this link %s to log in with your new password.'), $user->getUsername(), $password, $fullLink));
-
+                
                 $entityManager->persist($user);
                 $entityManager->flush();
-
+                
                 $viewModel = new ViewModel(array(
                     'email' => $email,
                     'navMenu' => $this->options->getNavMenu()
@@ -593,38 +588,38 @@ class RegistrationController extends AbstractActionController
             trigger_error('Number of password special characters exceeds specified password length', E_USER_WARNING);
             return false;
         }
-
+        
         $chars = "abcdefghijklmnopqrstuvwxyz";
         $caps = strtoupper($chars);
         $nums = "0123456789";
         $syms = "!@#$%^&*()-+?";
-
+        
         for ($i = 0; $i < $l; $i ++) {
             $out .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
         }
-
+        
         if ($count) {
             $tmp1 = str_split($out);
             $tmp2 = array();
-
+            
             for ($i = 0; $i < $c; $i ++) {
                 array_push($tmp2, substr($caps, mt_rand(0, strlen($caps) - 1), 1));
             }
-
+            
             for ($i = 0; $i < $n; $i ++) {
                 array_push($tmp2, substr($nums, mt_rand(0, strlen($nums) - 1), 1));
             }
-
+            
             for ($i = 0; $i < $s; $i ++) {
                 array_push($tmp2, substr($syms, mt_rand(0, strlen($syms) - 1), 1));
             }
-
+            
             $tmp1 = array_slice($tmp1, 0, $l - $count);
             $tmp1 = array_merge($tmp1, $tmp2);
             shuffle($tmp1);
             $out = implode('', $tmp1);
         }
-
+        
         return $out;
     }
 
@@ -637,12 +632,12 @@ class RegistrationController extends AbstractActionController
     {
         $transport = $this->mail;
         $message = new Message();
-
+        
         $message->addTo($to)
             ->addFrom($this->options->getSenderEmailAdress())
             ->setSubject($subject)
             ->setBody($messageText);
-
+        
         $transport->send($message);
     }
 
@@ -667,10 +662,10 @@ class RegistrationController extends AbstractActionController
     // if(null === $this->options) {
     // $this->options = $this->getServiceLocator()->get('csnuser_module_options');
     // }
-
+    
     // return $this->options;
     // }
-
+    
     // /**
     // * get entityManager
     // *
@@ -681,10 +676,10 @@ class RegistrationController extends AbstractActionController
     // if(null === $this->entityManager) {
     // $this->entityManager = $this->getServiceLocator()->get('doctrine.entitymanager.orm_default');
     // }
-
+    
     // return $this->entityManager;
     // }
-
+    
     // /**
     // * get translatorHelper
     // *
@@ -695,10 +690,10 @@ class RegistrationController extends AbstractActionController
     // if(null === $this->translatorHelper) {
     // $this->translatorHelper = $this->getServiceLocator()->get('MvcTranslator');
     // }
-
+    
     // return $this->translatorHelper;
     // }
-
+    
     // /**
     // * get userFormHelper
     // *
@@ -709,7 +704,7 @@ class RegistrationController extends AbstractActionController
     // if(null === $this->userFormHelper) {
     // $this->userFormHelper = $this->getServiceLocator()->get('csnuser_user_form');
     // }
-
+    
     // return $this->userFormHelper;
     // }
     public function setTranslator($opt)
@@ -751,14 +746,14 @@ class RegistrationController extends AbstractActionController
     public function setErroView($er)
     {
         $this->errorView = $er;
-
+        
         return $this;
     }
 
     public function setRegisterService($service)
     {
         $this->registerService = $service;
-
+        
         return $this;
     }
 
@@ -776,7 +771,7 @@ class RegistrationController extends AbstractActionController
 
     /**
      *
-     * @param mixed $chatkitService
+     * @param mixed $chatkitService            
      */
     public function setChatkitService($chatkitService)
     {

@@ -115,7 +115,7 @@ class User implements IdentityInterface
 
     /**
      *
-     * @var HierarchicalRole @ORM\ManyToOne(targetEntity="CsnUser\Entity\HierarchicalRole")
+     * @var Role @ORM\ManyToOne(targetEntity="CsnUser\Entity\Role")
      *      @ORM\JoinColumn(name="role_id", referencedColumnName="id", nullable=false)
      *      @Annotation\Type("DoctrineModule\Form\Element\ObjectSelect")
      *      @Annotation\Filter({"name":"StripTags"})

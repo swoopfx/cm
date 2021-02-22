@@ -32,39 +32,36 @@ class RedirectPlugin extends AbstractPlugin
 
     public function redirectCondition()
     {
-        
         $this->redirectToLogout();
         $authIdentity = $this->auth->hasIdentity(); // return boolean
-       if($authIdentity == true){
-       	 $isProfiled = $this->auth->getIdentity()->getProfiled();
-        if ($this->auth->hasIdentity() && $isProfiled == false) {
-            $this->setupRedirection->setupRedirect();
+        if ($authIdentity == true) {
+            $isProfiled = $this->auth->getIdentity()->getProfiled();
+            if ($this->auth->hasIdentity() && ($isProfiled == false || $isProfiled == NULL)) {
+               
+                $this->setupRedirection->setupRedirect();
+            }
         }
-       }
-        
     }
 
     public function redirectToLogout()
     {
         if (! $this->auth->hasIdentity()) {
-           
+            
             $this->redirect->toRoute('logout');
         }
     }
 
-   
     public function idStatusRedirection($id, $entity)
     {
         $this->noIdRedirrection($id);
         $this->nullIdRedirection($id, $entity);
-        
     }
 
     private function noIdRedirrection($id)
     {
         if ($id == NULL) {
             $this->flash->addErrorMessage("Editable value not selected");
-           return  $this->redirect->toRoute("dashboard");
+            return $this->redirect->toRoute("dashboard");
         }
     }
 
@@ -75,7 +72,7 @@ class RedirectPlugin extends AbstractPlugin
             $data = $em->find($entity, $id);
             if ($data == NULL) {
                 $this->flash->addErrorMessage("The information you request does not exist in our record");
-               return  $this->redirect->toRoute("dashboard");
+                return $this->redirect->toRoute("dashboard");
             }
         }
     }
