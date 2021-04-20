@@ -3,7 +3,7 @@ namespace Object\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Object\Entity\Object;
+use Object\Entity\Objectes;
 use Object\Service\ObjectService;
 use Zend\Session\Container;
 use WasabiLib\Ajax\Response;
@@ -816,7 +816,7 @@ class IndexController extends AbstractActionController
     {
         $em = $this->entityManager;
         $objectServe = $this->objectService;
-        $objectEntity = new Object();
+        $objectEntity = new Objectes();
         $objectSession = $objectServe->getObjectSession();
         $id = $this->params()->fromRoute("inf", NULL); // this is the customer ID
         if ($id == NULL) {

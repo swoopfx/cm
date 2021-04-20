@@ -134,7 +134,7 @@ class ObjectPersonData
 
     /**
      *
-     * @var \Object\Entity\Object @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectPerson")
+     * @var \Object\Entity\Objectes @ORM\OneToOne(targetEntity="Object\Entity\Objectes", inversedBy="objectPerson")
      *     
      */
     private $object;

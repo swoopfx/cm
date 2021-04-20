@@ -7,7 +7,7 @@
  */
 return array(
     'navigation' => array(
-        'mnavigation' => array(
+        'default' => array(
             [ // Begining Hone tab
                 'label' => '<i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span>',
                 'route' => 'dashboard',
@@ -23,7 +23,7 @@ return array(
                         'params' => [
                             'action' => 'dashboard'
                         ]
-                        
+                    
                     ],
                     [
                         'label' => 'Invoices',
@@ -213,35 +213,35 @@ return array(
                 'label' => '<i class=" fa fa-edit"></i> Proposals <span class="fa fa-chevron-down"></span> ',
                 'route' => 'proposal',
                 'pages' => [ // Begining Offer sub Tab
-                    
+                             
                     // [
-                    // 'label' => 'Proposals',
-                    // 'route' => 'proposal/default',
-                    // 'params' => [
-                    // 'action' => 'create'
-                        // ]
-                        // ],
+                             // 'label' => 'Proposals',
+                             // 'route' => 'proposal/default',
+                             // 'params' => [
+                             // 'action' => 'create'
+                             // ]
+                             // ],
+                             
+                    // [
+                             // 'label' => 'Generate Proposals',
+                             // 'route' => 'proposal/default',
+                             // 'params' => [
+                             // 'action' => 'create'
+                             // ]
+                             // ],
+                             // 'params' => [
+                             // 'action' => 'index'
+                             // ]
                     
-                // [
-                // 'label' => 'Generate Proposals',
-                    // 'route' => 'proposal/default',
-                    // 'params' => [
-                    // 'action' => 'create'
-                    // ]
-                    // ],
-                // 'params' => [
-            // 'action' => 'index'
-            // ]
-            
-            [
-                'label' => 'My Proposals ',
-                'route' => 'proposal/default',
-                'params' => [
-                    'action' => 'my-proposals'
+                    [
+                        'label' => 'My Proposals ',
+                        'route' => 'proposal/default',
+                        'params' => [
+                            'action' => 'my-proposals'
+                        ]
+                    ]
                 ]
-            ]
-        ]
-        ],
+            ],
             // [
             // 'label' => ' View company Proposals',
             // 'route' => 'proposal/default',
@@ -417,7 +417,7 @@ return array(
     
     'service_manager' => [
         'factories' => [
-            'mnavigation' => 'Navigations\Service\Factory\MainNavigationFactory'
+            'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory'
         ]
     ]
 ); 

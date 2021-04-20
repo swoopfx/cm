@@ -4,7 +4,7 @@ namespace Object\Controller\Factory;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Object\Controller\IndexController;
-use Object\Entity\Object;
+use Object\Entity\Objectes;
 
 // use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -25,7 +25,7 @@ class IndexControllerFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $ctr = new IndexController();
-        $objectEntity = new Object();
+        $objectEntity = new Objectes();
         $renderer = $serviceLocator->getServiceLocator()->get("ViewRenderer");
         $generalService = $serviceLocator->getServiceLocator()->get('GeneralServicer\Service\GeneralService');
         // $op = $serviceLocator->getServiceLocator()->get('csnuser_module_options');

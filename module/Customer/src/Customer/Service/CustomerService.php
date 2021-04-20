@@ -9,6 +9,7 @@ use CsnUser\Entity\User;
 use CsnUser\Service\StateService;
 use Customer\Entity\CustomerBroker;
 use GeneralServicer\Service\GeneralService;
+use CsnUser\Entity\Role;
 
 /**
  *
@@ -137,7 +138,7 @@ class CustomerService
             ->getEmail());
         $userEntity->setPassword(UserService::encryptPassword($pinCode));
         $userEntity->setRegistrationDate(new \DateTime());
-        $userEntity->setRole($em->find("CsnUser\Entity\HierarchicalRole", UserService::USER_ROLE_CUSTOMER));
+        $userEntity->setRole($em->find(Role::class, UserService::USER_ROLE_CUSTOMER));
         $userEntity->setState($em->find("CsnUser\Entity\State", StateService::STATE_ENABLED));
         $userEntity->setRegistrationToken(md5(uniqid(mt_rand(), true)));
         $userEntity->setEmailConfirmed(false);

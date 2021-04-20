@@ -104,19 +104,8 @@
 </head>
 <body class="nav-md footer_fixed">
 	<div class="container body">
-		<script>
-// var app = new Vue({
-// 	el:"#hi",
-// 	data:{
-// 		a1:"Please i dont know",
-// 		seen: true
-// 	}
-// });
-</script>
-		<script>
-
-var vm = new Vue({});
-</script>
+		
+		
 
 		<div class="main_container">
 
@@ -157,14 +146,14 @@ var vm = new Vue({});
 							<h3><?php echo $this->imprintHelper();?></h3>
                             <?php
 
-//                             echo $this->navigation('mnavigation')
-//                                 ->menu()
-//                                 ->setPartial('partials/main-navigation.phtml')
-//                                 ->setUlClass('nav side-menu')
-//                                 ->setOnlyActiveBranch();
-                            // echo $this->navigation('main-navigation')
-                            // ->menu()
-                            // ->render();
+                            echo $this->navigation('navigation')
+                                ->menu()
+                                ->setPartial('broker-navigation')
+                                ->setUlClass('nav side-menu')
+                                ->setOnlyActiveBranch();
+//                             echo $this->navigation('main-navigation')
+//                             ->menu()
+//                             ->render();
                             ?> 
 
                             

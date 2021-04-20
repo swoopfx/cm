@@ -12,7 +12,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use CsnUser\Service\UserService;
 use Customer\Service\CustomerService;
-use Object\Entity\Object;
+// use Object\Entity\Object;
 use Object\Service\ObjectService;
 use WasabiLib\Modal\WasabiModal;
 use WasabiLib\Modal\WasabiModalView;
@@ -636,6 +636,7 @@ class IndexController extends AbstractActionController
                     }
                 } catch (\Exception $e) {
                     $this->flashMessenger()->addErrorMessage("Error ! Customer hydration error");
+                    var_dump($e->getMessage());
                 }
             } else {
                 $this->flashMessenger()->addErrorMessage('Validation Error ');

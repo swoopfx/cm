@@ -44,7 +44,7 @@ class ObjectRepository extends EntityRepository
     public function findObjects($broker)
     {
         $max = 3000;
-        $dql = "SELECT o  FROM Object\Entity\Object o JOIN o.customer c JOIN c.customerBroker cb WHERE cb.broker = :broker AND o.isHidden = :hidden ORDER BY o.id DESC ";
+        $dql = "SELECT o  FROM Object\Entity\Objectes o JOIN o.customer c JOIN c.customerBroker cb WHERE cb.broker = :broker AND o.isHidden = :hidden ORDER BY o.id DESC ";
         $query = $this->getEntityManager()
             ->createQuery($dql)
             ->setMaxResults($max)

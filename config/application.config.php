@@ -11,12 +11,12 @@ return array(
         'Phpro\\Chart',
         'ZfrPusherModule',
         'Welcome',
-        'Navigations',
+        // 'Navigations',
         'Home',
         'Offer',
         'Settings',
         'Users',
-        //         'Object',
+        'Object',
         'Report',
         'Claims',
         'IMServices',
@@ -42,15 +42,18 @@ return array(
         'WasabiLib',
         'Help',
         'Webhook',
-        'General','Proparty',
+        'General',
+        'Proparty',
+        'AwsModule','Accounting'
     ),
     'module_listener_options' => array(
         'module_paths' => array(
             './module',
-            './vendor','./module',
+            './vendor',
+            './module','./module'
         ),
         'config_glob_paths' => array(
-            'config/autoload/{{,*.}global,{,*.}local}.php',
-        ),
-    ),
+            'config/autoload/{{,*.}global,{,*.}local}.php'
+        )
+    )
 );

@@ -6,7 +6,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 use Object\Service\ObjectService;
 
 use Zend\Session\Container;
-use Object\Entity\Object;
+use Object\Entity\Objectes;
 
 class ObjectServiceFactory implements FactoryInterface
 {
@@ -14,7 +14,7 @@ class ObjectServiceFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $objectService = new ObjectService();
-        $objectEntity = new Object();
+        $objectEntity = new Objectes();
         $objectSession = new Container("objectSession");
         $objectSession->setExpirationSeconds(60 * 60 * 24);
         

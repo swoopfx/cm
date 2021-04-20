@@ -7,6 +7,7 @@ use Object\Entity\ObjectBuildingData;
 use Object\Entity\ObjectTravel;
 use Object\Entity\ObjectPersonData;
 use Object\Entity\ObjectBusinessEquipment;
+use Object\Entity\Objectes;
 
 class ObjectService
 {
@@ -272,7 +273,7 @@ class ObjectService
     public function getAllBrokerObject()
     {
         $em = $this->entityManager;
-        $data = $em->getRepository("Object\Entity\Object")->findObjects($this->centralBrokerId);
+        $data = $em->getRepository(Objectes::class)->findObjects($this->centralBrokerId);
         return $data;
     }
 

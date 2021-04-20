@@ -19,7 +19,7 @@ use IMServices\Entity\ContractAllRisk;
  * @ORM\Table(name="objects")
  * @ORM\Entity(repositoryClass="Object\Entity\Repository\ObjectRepository")
  */
-class Object
+class Objectes
 {
 
     /**

@@ -84,7 +84,7 @@ return array(
         'not_found_template' => 'error/404',
         'exception_template' => 'error/index',
         'template_map' => array(
-            'layout/layout' => __DIR__ . '/../view/layout/404.phtml', // FIXME - make sure this is default 404.phtml
+            'layout/layout' => __DIR__ . '/../view/layout/layout.phtml', // FIXME - make sure this is default 404.phtml
             'layout/login' => __DIR__ . '/../view/layout/login.phtml',
             'activate-lay' => __DIR__ . '/../view/layout/activate-lay.phtml',
             "broker_setup_layout"=> __DIR__ . '/../view/layout/broker_setup_layout.phtml',
@@ -101,6 +101,8 @@ return array(
             'mail/invoice'=>__DIR__ . '/../view/emails/success-profile.phtml',
             'mail/confirm/email'=>__DIR__ . '/../view/emails/confirm-email.phtml',
             "top_stats"=>__DIR__ . '/../view/partials/topstats.phtml',
+            
+            "broker-navigation"=>__DIR__ . '/../view/partials/main-navigation.phtml',
             
             "application_chat_popup"=>__DIR__ . '/../view/partials/application_chat_popup.phtml',
         ),

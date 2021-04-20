@@ -4,7 +4,7 @@ namespace Object\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use Zend\Form\Fieldset;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject;
-use Object\Entity\Object;
+use Object\Entity\Objectes;
 
 /**
  *
@@ -28,7 +28,7 @@ class ObjectFieldset extends Fieldset implements InputFilterProviderInterface
     public function init()
     {
         $hydrator = new DoctrineObject($this->entityManager);
-        $this->setHydrator($hydrator)->setObject(new Object());
+        $this->setHydrator($hydrator)->setObject(new Objectes());
         
         $this->addFeilds();
         //$this->conditionalFieldset();
