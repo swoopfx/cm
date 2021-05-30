@@ -135,7 +135,7 @@ class Proposal
 
     /**
      *
-     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Proparty\Entity\Proparty")
+     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Object\Entity\Objectes")
      *      @ORM\JoinTable(name="object_proposal",
      *      joinColumns={
      *      @ORM\JoinColumn(name="proposal_id", referencedColumnName="id")

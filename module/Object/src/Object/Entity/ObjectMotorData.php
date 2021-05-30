@@ -126,7 +126,7 @@ class ObjectMotorData
 
     /**
      *
-     * @var \Object\Entity\Object @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectMotor")
+     * @var \Object\Entity\Objectes @ORM\OneToOne(targetEntity="Object\Entity\Objectes", inversedBy="objectMotor")
      *      @ORM\JoinColumn(name="object", referencedColumnName="id")
      */
     private $object;

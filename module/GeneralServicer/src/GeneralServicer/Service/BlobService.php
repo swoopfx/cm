@@ -10,6 +10,7 @@ use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 use MicrosoftAzure\Storage\Blob\Models\CreateBlockBlobOptions;
 use GeneralServicer\Entity\Document;
 use MicrosoftAzure\Storage\Common\Internal\Resources;
+use ZendService\Amazon\S3\S3;
 
 /**
  *
@@ -18,6 +19,24 @@ use MicrosoftAzure\Storage\Common\Internal\Resources;
  */
 class BlobService
 {
+    
+    /**
+     *
+     * @var BlobRestProxy
+     */
+    private $azureConnection;
+    
+    /**
+     *
+     * @var S3
+     */
+    private $awsConnection;
+    
+    /**
+     *
+     * @var StorageClient
+     */
+    private $gcpConnection;
 
     private $entityManager;
 
@@ -87,6 +106,8 @@ class BlobService
     const GIF_MIME_TYPE = "image/gif";
 
     const MAX_FILE_SIZE = 10582853;
+    
+    const CONTAINER_NAME ='imappcm';
 
     // 10 MB
 
@@ -237,6 +258,94 @@ class BlobService
         // return false;
         // }
     }
+    
+    
+    protected function uploadToAws(array $file, string $path = 'upload')
+    {
+        // $this->awsConnection->createBucket(self::CONTAINER_NAME);
+        $fullPath = self::CONTAINER_NAME . '/' . $path;
+        $em = $this->entityManager;
+        $document = new Document();
+        
+        $docSize = getimagesize($file['tmp_name']); // returns the dension array of the file width/ height
+        
+        if ($file["size"] > BlobService::MAX_FILE_SIZE) {
+            // Trigger an event
+            throw new \Exception($this->error_messages[2]);
+        } // elseif ($imageSize[0] < self::IMAGE_LOW_RES_MINIMUM_WIDTH) {
+        // throw new \Exception("Image width should not be less than " . self::IMAGE_LOW_RES_MINIMUM_WIDTH . "px");
+        // }
+        elseif ($docSize[0] > 3000) {
+            throw new \Exception("Image width should not be more than 3000px");
+        } elseif ($file['tmp_name'] == NULL) {
+            throw new \Exception($this->error_messages[4]);
+        } else {
+            
+            $content = fopen($file['tmp_name'], 'r');
+            $file['name'] = $this->cleanBlobName($file["name"]);
+            
+            $lowResPath = $fullPath . "/lowres";
+            $thumbnailpath = $fullPath . "/thumbnail";
+            
+            $thumbnail = $this->createThumbnail($file['tmp_name']);
+            $lowResolution = $this->createLowerresolution($file['tmp_name']);
+            
+            // $file["name"] = $this->cleanBlobName($file["name"]);
+            try {
+                $this->awsConnection->putObject($fullPath . '/' . $file['name'], $content, [
+                    S3::S3_ACL_HEADER => S3::S3_ACL_PUBLIC_READ
+                ]);
+            } catch (\Exception $e) {}
+            
+            // var_dump($thumbnail);
+            
+            // $this->awsConnection->put
+            
+            // var_dump("kiiii");
+            try {
+                // var_dump($thumbnail);
+                $thumbnai['name'] = $this->thumbnailBlobName($file['name']);
+                $this->awsConnection->putObject($thumbnailpath . '/' . $thumbnai['name'], $thumbnail, [
+                    S3::S3_ACL_HEADER => S3::S3_ACL_PUBLIC_READ
+                ]);
+            } catch (\Exception $e) {
+                // var_dump($e->getMessage());
+            }
+            // var_dump("der");
+            try {
+                $lowResolutio['name'] = $this->lowResBlobName($file['name']);
+                $this->awsConnection->putObject($lowResPath . '/' . $lowResolutio['name'], $lowResolution, [
+                    S3::S3_ACL_HEADER => S3::S3_ACL_PUBLIC_READ
+                ]);
+            } catch (\Exception $e) {
+                // var_dump($e->getMessage());
+            }
+            
+            
+            $loadUri = $this->awsConnection->getEndpoint();
+           
+            $docUrl = $loadUri . "/" . $fullPath . '/' . $file['name'];
+            $thumbImage = $loadUri . "/" . $thumbnailpath . '/' . $thumbnai['name'];
+            $lowResImage = $loadUri . "/" . $lowResPath . '/' . $lowResolutio['name'];
+            $mimeType = $file["type"];
+            
+           
+            
+            $imageEntity->setCreatedOn(new \DateTime())
+            ->setThumbnail($thumbImage)
+            ->setImageUrl($docUrl)
+            ->setImageName($file['name'])
+            ->setLowres($lowResImage)
+            ->setImageUid(self::ImageUid())
+            ->setIsHidden(FALSE)
+            ->setMimeType($mimeType);
+            
+            // $em->persist($imageEntity);
+            
+            return $imageEntity;
+            // }
+        }
+    }
 
     public function uploadpdf($stream)
     {
@@ -361,6 +470,36 @@ class BlobService
         $const = "blob";
         $code = \uniqid($const);
         return $code . $this->userId;
+    }
+    
+    /**
+     *
+     * @param \MicrosoftAzure\Storage\Blob\BlobRestProxy $azureConnection
+     */
+    public function setAzureConnection($azureConnection)
+    {
+        $this->azureConnection = $azureConnection;
+        return $this;
+    }
+    
+    /**
+     *
+     * @param \Aws\S3\S3Client $awsConnection
+     */
+    public function setAwsConnection($awsConnection)
+    {
+        $this->awsConnection = $awsConnection;
+        return $this;
+    }
+    
+    /**
+     *
+     * @param \Google\Cloud\Storage\StorageClient $gcpConnection
+     */
+    public function setGcpConnection($gcpConnection)
+    {
+        $this->gcpConnection = $gcpConnection;
+        return $this;
     }
 
     // Begin Internal Stters

@@ -23,8 +23,8 @@ class ObjectLifeStyle
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Object", inversedBy="objectLifeStyle")
-     * @var Object
+     * @ORM\OneToOne(targetEntity="Objectes", inversedBy="objectLifeStyle")
+     * @var Objectes
      */
     private $object;
 

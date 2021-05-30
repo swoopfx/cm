@@ -25,9 +25,9 @@ class ObjectNonBusinessEquipment
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectNonBusinessEquipment")
+     * @ORM\OneToOne(targetEntity="Object\Entity\Objectes", inversedBy="objectNonBusinessEquipment")
      *
-     * @var Object
+     * @var Objectes
      */
     private $object;
 

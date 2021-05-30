@@ -755,11 +755,11 @@ class IndexController extends AbstractActionController
             $this->flashmessenger()->addErrorMessage("No identifier available for this property");
             $this->redirect()->toRoute("object");
         }
-        $objects = $em->getRepository("Object\Entity\Object")->findBy(array(
+        $objects = $em->getRepository("Object\Entity\Objectes")->findBy(array(
             "customer" => $customerId
         ));
         $this->objectNotMine($customerId);
-        $objects = $em->getRepository("Object\Entity\Object")->findBy(array(
+        $objects = $em->getRepository("Object\Entity\Objectes")->findBy(array(
             "customer" => $customerId
         ));
         $customerEntity = $em->find("Customer\Entity\Customer", $customerId);

@@ -37,9 +37,9 @@ class ObjectSports
     private $details;
 
     /**
-     * @ORM\OneToOne(targetEntity="Object", inversedBy="objectSport")
+     * @ORM\OneToOne(targetEntity="Objectes", inversedBy="objectSport")
      *
-     * @var Object
+     * @var Objectes
      */
     private $object;
 

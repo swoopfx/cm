@@ -3,6 +3,7 @@ namespace GeneralServicer\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Proparty\Entity\Proparty;
+use Object\Entity\Objectes;
 
 /**
  * GeneratedRecurBill
@@ -53,7 +54,7 @@ class GeneratedRecurBill
 
     /**
      *
-     * @var Proparty @ORM\ManyToOne(targetEntity="Proparty\Entity\Proparty")
+     * @var Objectes @ORM\ManyToOne(targetEntity="Object\Entity\Objectes")
      *      @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="object_id", referencedColumnName="id")
      *      })

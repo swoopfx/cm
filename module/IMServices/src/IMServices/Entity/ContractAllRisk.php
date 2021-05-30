@@ -460,7 +460,7 @@ class ContractAllRisk
 
     /**
      *
-     * @ORM\OneToOne(targetEntity="Proparty\Entity\Proparty", inversedBy="objectContractAllRisk")
+     * @ORM\OneToOne(targetEntity="Object\Entity\Objectes", inversedBy="objectContractAllRisk")
      *
      * @var Proparty
      */

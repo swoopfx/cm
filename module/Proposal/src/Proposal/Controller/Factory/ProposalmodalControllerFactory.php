@@ -26,7 +26,9 @@ class ProposalmodalControllerFactory implements FactoryInterface
      */
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
+       
         $ctr = new ProposalmodalController();
+       
         $generalService = $serviceLocator->getServiceLocator()->get('GeneralServicer\Service\GeneralService');
         $em = $generalService->getEntityManager();
         $renderer = $generalService->getViewRender();

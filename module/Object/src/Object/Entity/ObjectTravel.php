@@ -103,8 +103,8 @@ class ObjectTravel
 
     /**
      *
-     * @var \Object\Entity\Object
-     *  @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectTravel")
+     * @var \Object\Entity\Objectes
+     *  @ORM\OneToOne(targetEntity="Object\Entity\Objectes", inversedBy="objectTravel")
      *     
      */
     private $object;

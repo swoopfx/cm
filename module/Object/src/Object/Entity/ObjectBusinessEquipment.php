@@ -28,8 +28,8 @@ class ObjectBusinessEquipment
     private $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Proparty\Entity\Proparty", inversedBy="businessEquipment")
-     * @var Proparty
+     * @ORM\OneToOne(targetEntity="Object\Entity\Objectes", inversedBy="businessEquipment")
+     * @var Objectes
      */
     private $object;
     

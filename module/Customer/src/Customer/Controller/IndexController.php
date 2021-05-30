@@ -39,6 +39,7 @@ use GeneralServicer\Service\CurrencyService;
 use Doctrine\ORM\EntityManager;
 use WasabiLib\Modal\Dialog;
 use WasabiLib\Modal\Button;
+use Object\Entity\Objectes;
 
 class IndexController extends AbstractActionController
 {
@@ -1099,11 +1100,13 @@ class IndexController extends AbstractActionController
         // "customer" => $customerId
         // ));
         // $this->objectNotMine($customerId);
-        $objects = $em->getRepository("Object\Entity\Object")->findBy(array(
+        
+        $objects = $em->getRepository(Objectes::class)->findBy(array(
             "customer" => $customerId
         ), array(
             "id" => "DESC"
         ));
+   
 
         $customerEntity = $em->find("Customer\Entity\Customer", $customerId);
         $view = new ViewModel(array(

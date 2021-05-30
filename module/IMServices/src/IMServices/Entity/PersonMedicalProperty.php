@@ -35,7 +35,7 @@ class PersonMedicalProperty
 
     /**
      *
-     * @var PropartyPersonData @ORM\ManyToOne(targetEntity="Proparty\Entity\PropartyPersonData")
+     * @var ObjectPersonData @ORM\ManyToOne(targetEntity="Object\Entity\ObjectPersonData")
      *      @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="idobject_person_data", referencedColumnName="id")
      *      })

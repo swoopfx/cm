@@ -42,8 +42,8 @@ class ObjectOthers
     
     
     /**
-     * @ORM\OneToOne(targetEntity="Object", inversedBy="objectOthers")
-     * @var Object
+     * @ORM\OneToOne(targetEntity="Objectes", inversedBy="objectOthers")
+     * @var Objectes
      */
     private $object;
 

@@ -162,7 +162,7 @@ class Offer
 
     /**
      *
-     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Proparty\Entity\Proparty")
+     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Object\Entity\Objectes")
      *      @ORM\JoinTable(name="object_offer",
      *      joinColumns={
      *      @ORM\JoinColumn(name="offer_id", referencedColumnName="id")

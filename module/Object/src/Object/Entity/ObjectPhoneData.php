@@ -64,7 +64,7 @@ class ObjectPhoneData
 
     /**
      *
-     * @var \Object\Entity\Object @ORM\ManyToOne(targetEntity="Object\Entity\Object")
+     * @var \Object\Entity\Objectes @ORM\ManyToOne(targetEntity="Object\Entity\Objectes")
      *      @ORM\JoinColumns({
      *      @ORM\JoinColumn(name="object_id", referencedColumnName="id")
      *      })

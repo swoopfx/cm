@@ -9,11 +9,12 @@ use Zend\Session\Container;
 use WasabiLib\Modal\WasabiModal;
 use WasabiLib\Modal\WasabiModalView;
 use WasabiLib\Ajax\GritterMessage;
-use Object\Entity\Object;
+use Object\Entity\Objectes;
 use Object\Service\ObjectService;
 use WasabiLib\Ajax\Redirect;
 use WasabiLib\Modal\WasabiModalConfigurator;
 use Transactions\Entity\Invoice;
+use Proposal\Entity\Proposal;
 
 /**
  * This are major modal call for proposal Module
@@ -136,7 +137,7 @@ class ProposalmodalController extends AbstractActionController
         $request = $this->getRequest();
         if ($request->isPost()) {
             $gritter = new GritterMessage();
-            $objectEntity = new Object();
+            $objectEntity = new Objectes();
             $post = $request->getPost();
             $objectForm->setData($post);
             $objectForm->setValidationGroup(array(
@@ -292,21 +293,28 @@ class ProposalmodalController extends AbstractActionController
     public function proposaldescAction()
     {
         $em = $this->entityManager;
-        $proposalService = $this->proposalService;
-        $proposalSession = $proposalService->getProposalSession();
-        $proposalEntity = $em->find("Proposal\Entity\Proposal", $proposalSession->proposalId);
-
-        // $desc = $this->
-        $modal = new WasabiModal("standard", "Proposal Description");
-        $viewModel = new ViewModel(array(
-            "desc" => $proposalEntity->getProposalDesc()
-        ));
-        $viewModel->setTemplate("proposal-desc-modal");
-        $modal->setContent($viewModel);
-        $modalView = new WasabiModalView("#wasabi_modal", $this->renderer, $modal);
-
         $response = new Response();
-        $response->add($modalView);
+       
+      
+            $proposalService = $this->proposalService;
+            $proposalSession = $proposalService->getProposalSession();
+            $proposalEntity = $em->find(Proposal::class, $proposalSession->proposalId);
+            
+           
+            // $desc = $this->
+            $modal = new WasabiModal("standard", "Proposal Description");
+            $viewModel = new ViewModel(array(
+                "desc" => $proposalEntity->getProposalDesc()
+            ));
+            $viewModel->setTemplate("proposal-desc-modal");
+            $modal->setContent($viewModel);
+            $modalView = new WasabiModalView("#wasabi_modal", $this->renderer, $modal);
+            
+            
+            $response->add($modalView);
+            
+       
+        
         return $this->getResponse()->setContent($response);
     }
 

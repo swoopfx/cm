@@ -21,8 +21,9 @@
 		"zf-commons/zfc-user-doctrine-orm" : "~1.0.2",
 		"zf-commons/zfc-admin" : "0.2.1",
 		"zendframework/zftool" : "~0.1",
-		"aws/aws-sdk-php-zf2" : "3.0.0",
-		"quickbooks/v3-php-sdk": "^6.0"
+		"quickbooks/v3-php-sdk" : "^6.0",
+		"zendframework/zendservice-amazon" : "~2.3",
+		"imagine/imagine" : "~1.2"
 	},
 	"license" : "BSD-3-Clause",
 	"keywords" : [

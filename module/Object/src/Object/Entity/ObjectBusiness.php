@@ -68,9 +68,9 @@ class ObjectBusiness
     private $businessAddress;
 
     /**
-     * @ORM\OneToOne(targetEntity="Object", inversedBy="objectBusiness")
+     * @ORM\OneToOne(targetEntity="Objectes", inversedBy="objectBusiness")
      *
-     * @var Object
+     * @var Objectes
      */
     private $object;
 

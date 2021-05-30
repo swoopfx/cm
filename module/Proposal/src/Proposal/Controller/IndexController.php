@@ -10,7 +10,7 @@ use Zend\Session\Container;
 use WasabiLib\Ajax\Response;
 // use WasabiLib\Ajax\InnerHtml;
 use Proposal\Service\ProposalService;
-use Object\Entity\Object;
+use Object\Entity\Objectes;
 use Object\Service\ObjectService;
 use Policy\Entity\CoverNote;
 use Messages\Service\MessageService;

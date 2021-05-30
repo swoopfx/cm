@@ -104,7 +104,7 @@ class CustomerPackage
      */
     /**
      *
-     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Proparty\Entity\Proparty")
+     * @var \Doctrine\Common\Collections\Collection @ORM\ManyToMany(targetEntity="Object\Entity\Objectes")
      *      @ORM\JoinTable(name="object_custpmer_packages",
      *      joinColumns={
      *      @ORM\JoinColumn(name="customer_package_id", referencedColumnName="id")

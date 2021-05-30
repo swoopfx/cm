@@ -53,7 +53,7 @@ class ClaimsBusinessInteruption
 
     /**
      * This is a list of machine lost in the loss
-     * @ORM\ManyToMany(targetEntity="Proparty\Entity\PropartyBusinessEquipment")
+     * @ORM\ManyToMany(targetEntity="Object\Entity\ObjectBusinessEquipment")
      * @ORM\JoinTable(name="claims_business_interuption_equipment",
      * joinColumns={
      * @ORM\JoinColumn(name="claims_business", referencedColumnName="id")

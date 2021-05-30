@@ -31,10 +31,10 @@ class ObjectBroker
     private $broker;
 
     /**
-     * @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectBroker")
+     * @ORM\OneToOne(targetEntity="Object\Entity\Objectes", inversedBy="objectBroker")
      * @ORM\JoinColumn(name="object", referencedColumnName="id")
      * 
-     * @var Object
+     * @var Objectes
      */
     private $object;
 

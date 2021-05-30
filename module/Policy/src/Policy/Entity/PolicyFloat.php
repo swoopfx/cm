@@ -69,7 +69,7 @@ class PolicyFloat
 
     /**
      *
-     * @ORM\ManyToMany(targetEntity="Proparty\Entity\Proparty")
+     * @ORM\ManyToMany(targetEntity="Object\Entity\Objectes")
      * @ORM\JoinTable(name="float_policy_objects",
      * joinColumns={@ORM\JoinColumn(name="float_policy", referencedColumnName="id")},
      * inverseJoinColumns={@ORM\JoinColumn(name="object_id", referencedColumnName="id")}

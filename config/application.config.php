@@ -43,14 +43,14 @@ return array(
         'Help',
         'Webhook',
         'General',
-        'Proparty',
-        'AwsModule','Accounting'
+        'Accounting'
     ),
     'module_listener_options' => array(
         'module_paths' => array(
             './module',
             './vendor',
-            './module','./module'
+            './module',
+            './module'
         ),
         'config_glob_paths' => array(
             'config/autoload/{{,*.}global,{,*.}local}.php'

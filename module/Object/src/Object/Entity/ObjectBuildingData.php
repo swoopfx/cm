@@ -29,7 +29,7 @@ class ObjectBuildingData
 
     /**
      *
-     * @var \Object\Entity\Object @ORM\OneToOne(targetEntity="Object\Entity\Object", inversedBy="objectBuilding")
+     * @var \Object\Entity\Objectes @ORM\OneToOne(targetEntity="Object\Entity\Objectes", inversedBy="objectBuilding")
      *     
      */
     private $object;

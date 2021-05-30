@@ -29,8 +29,8 @@ class ObjectLife
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Object")
-     * @var Object
+     * @ORM\ManyToOne(targetEntity="Objectes")
+     * @var Objectes
      */
     private $object;
 
